@@ -3,15 +3,16 @@ package com.lospollos.truthordare.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lospollos.truthordare.R
 
-class PlayersRecyclerViewAdapter(private val namesList: List<String>) :
+class PlayersRecyclerViewAdapter(var playersCount: Int) :
     RecyclerView.Adapter<PlayersRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var nameTextView: TextView? = null
+        var nameTextView: EditText? = null
 
         init {
             nameTextView = itemView.findViewById(R.id.players_name_text_view)
@@ -25,9 +26,9 @@ class PlayersRecyclerViewAdapter(private val namesList: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nameTextView?.text = namesList[position]
+        //holder.nameTextView?.text = namesList[position]
     }
 
-    override fun getItemCount(): Int = namesList.size
+    override fun getItemCount(): Int = playersCount
 
 }
