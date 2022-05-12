@@ -5,10 +5,36 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.GameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/game_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/game_task_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/game_reroll_task_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/game_reroll_task_button_text"/>
+
+    <Button
+        android:id="@+id/game_next_task_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/game_next_task_button_text"/>
+
+
+
 
 </FrameLayout>

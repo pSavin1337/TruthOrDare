@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.view.children
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lospollos.truthordare.Constants.INITIAL_PLAYERS_COUNT
 import com.lospollos.truthordare.R
+import com.lospollos.truthordare.ui.activities.MainActivity
 import com.lospollos.truthordare.ui.adapters.PlayersRecyclerViewAdapter
 import com.lospollos.truthordare.viewmodels.DefinitionPlayersViewModel
 
@@ -23,6 +26,8 @@ class DefinitionPlayersFragment : Fragment() {
     private lateinit var addPlayerButton: Button
     private lateinit var startGameButton: Button
     private lateinit var definitionPlayersViewModel: DefinitionPlayersViewModel
+
+    private val playersList = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,8 +60,14 @@ class DefinitionPlayersFragment : Fragment() {
 
         startGameButton.setOnClickListener {
             playersRecyclerView.children.iterator().forEachRemaining { item ->
-
+                (item as ViewGroup).children.iterator().forEachRemaining { child ->
+                    if (child is TextView) {
+                        playersList.add(child.text.toString())
+                    }
+                }
             }
+            definitionPlayersViewModel.onPlayersListReady(playersList)
+            (activity as MainActivity).openGameFragment()
         }
 
     }

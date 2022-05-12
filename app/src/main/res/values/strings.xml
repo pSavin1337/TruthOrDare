@@ -5,4 +5,6 @@
     <string name="launcher_start_button_text">Start</string>
     <string name="players_start_button_text">Start game</string>
     <string name="players_add_player_button_text">+</string>
+    <string name="game_reroll_task_button_text">Reroll</string>
+    <string name="game_next_task_button_text">Next</string>
 </resources>

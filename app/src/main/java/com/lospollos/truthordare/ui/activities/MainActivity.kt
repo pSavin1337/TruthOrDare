@@ -9,7 +9,7 @@ import com.lospollos.truthordare.R
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var navController: NavController
+    private lateinit var navController: NavController
 
     override fun onSupportNavigateUp()
             = findNavController(R.id.nav_host).navigateUp()
@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     fun openDefinitionPlayersFragment() {
         navController.navigate(R.id.action_launcherFragment_to_definitionPlayersFragment)
+    }
+
+    fun openGameFragment() {
+        navController.navigate(R.id.action_definitionPlayersFragment_to_gameFragment)
     }
 
 }

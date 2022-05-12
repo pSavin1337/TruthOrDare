@@ -6,11 +6,17 @@ object Players {
 
     var players = ArrayList<String>()
 
-    fun chooseRandomPlayer(): String = players[Random(players.size).nextInt()]
+    private const val startIndex = 0
+    private var lastPlayer: String? = null
 
-    fun deletePlayer(playerId: Int) = players.removeAt(playerId)
-
-    fun addPlayer(playerName: String) = players.add(playerName)
+    fun chooseRandomPlayer(): String {
+        var currentPlayer = players[Random.nextInt(startIndex, players.size - 1)]
+        while(currentPlayer == lastPlayer) {
+            currentPlayer = players[Random.nextInt(startIndex, players.size - 1)]
+        }
+        lastPlayer = currentPlayer
+        return currentPlayer
+    }
 
     fun forEachPlayers(onIteration: () -> Unit) {
         players.forEach { _ ->
