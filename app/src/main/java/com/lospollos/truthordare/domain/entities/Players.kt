@@ -2,11 +2,11 @@ package com.lospollos.truthordare.domain.entities
 
 import kotlin.random.Random
 
-object Players {
+class Players {
 
     var players = ArrayList<String>()
 
-    private const val startIndex = 0
+    private val startIndex = 0
     private var lastPlayer: String? = null
 
     fun chooseRandomPlayer(): String {
@@ -16,12 +16,6 @@ object Players {
         }
         lastPlayer = currentPlayer
         return currentPlayer
-    }
-
-    fun forEachPlayers(onIteration: () -> Unit) {
-        players.forEach { _ ->
-            onIteration()
-        }
     }
 
 }

@@ -1,7 +1,7 @@
 package com.lospollos.truthordare.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openDefinitionPlayersFragment() {
-        navController.navigate(R.id.action_launcherFragment_to_definitionPlayersFragment)
+        navController.navigate(R.id.action_launcherFragment_to_taskChoosingFragment)
     }
 
     fun openGameFragment() {

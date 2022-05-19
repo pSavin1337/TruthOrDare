@@ -6,15 +6,6 @@
     app:startDestination="@id/launcherFragment">
 
     <fragment
-        android:id="@+id/launcherFragment"
-        android:name="com.lospollos.truthordare.ui.fragments.LauncherFragment"
-        android:label="fragment_launcher"
-        tools:layout="@layout/fragment_launcher" >
-        <action
-            android:id="@+id/action_launcherFragment_to_definitionPlayersFragment"
-            app:destination="@id/definitionPlayersFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/definitionPlayersFragment"
         android:name="com.lospollos.truthordare.ui.fragments.DefinitionPlayersFragment"
         android:label="fragment_definition_players"
@@ -28,4 +19,22 @@
         android:name="com.lospollos.truthordare.ui.fragments.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" />
+    <fragment
+        android:id="@+id/launcherFragment"
+        android:name="com.lospollos.truthordare.ui.fragments.LauncherFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/fragment_launcher" >
+        <action
+            android:id="@+id/action_launcherFragment_to_taskChoosingFragment"
+            app:destination="@id/taskChoosingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskChoosingFragment"
+        android:name="com.lospollos.truthordare.ui.fragments.TaskChoosingFragment"
+        android:label="fragment_task_choosing"
+        tools:layout="@layout/fragment_task_choosing" >
+        <action
+            android:id="@+id/action_taskChoosingFragment_to_definitionPlayersFragment"
+            app:destination="@id/definitionPlayersFragment" />
+    </fragment>
 </navigation>

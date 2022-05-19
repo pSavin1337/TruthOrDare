@@ -15,27 +15,36 @@ class GameFragment : Fragment() {
 
     private lateinit var gameViewModel: GameViewModel
     private lateinit var playerNameTextView: TextView
+    private lateinit var taskTextView: TextView
     private lateinit var nextTaskButton: Button
+    private lateinit var rerollButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_game, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         playerNameTextView = view.findViewById(R.id.game_name_text_view)
+        taskTextView = view.findViewById(R.id.game_task_text_view)
         nextTaskButton = view.findViewById(R.id.game_next_task_button)
+        rerollButton = view.findViewById(R.id.game_reroll_task_button)
         gameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
-        gameViewModel.onNextTask()
-        gameViewModel.playerName.observe(viewLifecycleOwner) { playerName ->
+        gameViewModel.onNextPlayer()
+        gameViewModel.playerNameLiveData.observe(viewLifecycleOwner) { playerName ->
             playerNameTextView.text = playerName
         }
+        gameViewModel.taskLiveData.observe(viewLifecycleOwner) { task ->
+            taskTextView.text = task
+        }
         nextTaskButton.setOnClickListener {
-            gameViewModel.onNextTask()
+            gameViewModel.onNextPlayer()
+        }
+        rerollButton.setOnClickListener {
+            gameViewModel.onReroll()
         }
     }
 

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lospollos.truthordare.R
 
@@ -12,7 +11,7 @@ class PlayersRecyclerViewAdapter(var playersCount: Int) :
     RecyclerView.Adapter<PlayersRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var nameTextView: EditText? = null
+        private var nameTextView: EditText? = null
 
         init {
             nameTextView = itemView.findViewById(R.id.players_name_text_view)

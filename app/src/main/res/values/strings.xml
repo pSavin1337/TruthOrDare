@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Truth or Dare</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="launcher_start_button_text">Start</string>
     <string name="players_start_button_text">Start game</string>
     <string name="players_add_player_button_text">+</string>
     <string name="game_reroll_task_button_text">Reroll</string>
     <string name="game_next_task_button_text">Next</string>
+    <string name="choose_choosing_file_button_text">Choose File</string>
+    <string name="choose_to_next_fragment_button_text">Next</string>
+    <string name="choose_textview_success_text">Tasks uploaded successfully</string>
+    <string name="choose_textview_not_found_text">File not founded</string>
+    <string name="choose_textview_invalid_type_text">File type is invalid</string>
 </resources>
