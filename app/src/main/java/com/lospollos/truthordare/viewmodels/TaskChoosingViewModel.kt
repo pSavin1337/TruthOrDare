@@ -19,8 +19,9 @@ class TaskChoosingViewModel : ViewModel() {
     private val tasksUseCase = TasksUseCase()
 
     fun onChoosingFileButtonClick(resultLauncher: ActivityResultLauncher<Intent>) {
+        val fileType = "text/plain"
         val intent = Intent()
-            .setType("text/plain")
+            .setType(fileType)
             .setAction(Intent.ACTION_GET_CONTENT)
 
         val intentTitle = "Choose File"
@@ -30,21 +31,7 @@ class TaskChoosingViewModel : ViewModel() {
     fun onChoosingActivityResult(result: ActivityResult) {
         if (result.resultCode == Activity.RESULT_OK) {
             val selectedFile = result.data?.data
-            val request = if (selectedFile == null) {
-                TaskLoaderRequest.FileNotExist
-            } else {
-                tasksUseCase.getTasks(selectedFile)
-            }
-            when (request) {
-                is TaskLoaderRequest.Success -> {
-                    tasksUseCase.setTasksList(request.tasks)
-                    requestLiveData.value = SUCCESS_TASK_REQUEST_CODE
-                }
-                is TaskLoaderRequest.FileNotExist -> requestLiveData.value =
-                    NOT_FOUND_TASK_REQUEST_CODE
-                is TaskLoaderRequest.ErrorFileType -> requestLiveData.value =
-                    TYPE_ERROR_TASK_REQUEST_CODE
-            }
+            requestLiveData.value = tasksUseCase.getTasks(selectedFile)
         }
     }
 

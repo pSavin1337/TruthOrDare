@@ -24,7 +24,7 @@ class LauncherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         launcherButton = view.findViewById(R.id.launcher_start_button)
         launcherButton.setOnClickListener {
-            (activity as MainActivity).openDefinitionPlayersFragment()
+            (activity as MainActivity).openTaskChoosingFragment()
         }
     }
 

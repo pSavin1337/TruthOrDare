@@ -10,9 +10,9 @@ class Tasks {
     private var lastTask: String? = null
 
     fun chooseRandomTask(): String {
-        var currentTask = tasks[Random.nextInt(startIndex, tasks.size - 1)]
+        var currentTask = tasks[Random.nextInt(startIndex, tasks.size)]
         while(currentTask == lastTask) {
-            currentTask = tasks[Random.nextInt(startIndex, tasks.size - 1)]
+            currentTask = tasks[Random.nextInt(startIndex, tasks.size)]
         }
         lastTask = currentTask
         return currentTask

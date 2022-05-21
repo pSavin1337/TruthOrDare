@@ -8,4 +8,6 @@ object Constants {
     const val NOT_FOUND_TASK_REQUEST_CODE = 1
     const val TYPE_ERROR_TASK_REQUEST_CODE = 2
 
+    const val REQUEST_CODE = 1337
+
 }

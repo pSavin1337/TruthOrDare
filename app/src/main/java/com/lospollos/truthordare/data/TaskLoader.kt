@@ -4,8 +4,13 @@ import java.io.File
 
 class TaskLoader {
 
-    fun loadTask(link: String): TaskLoaderRequest {
-        val taskFile = File(link)
+    fun loadTask(link: String?): TaskLoaderRequest {
+        val taskFile: File
+        if (link == null) {
+            return TaskLoaderRequest.FileNotExist
+        } else {
+            taskFile = File(link)
+        }
         return if(taskFile.exists()) {
             if (taskFile.isFile && taskFile.canRead()) {
                 val tasks = ArrayList<String>()

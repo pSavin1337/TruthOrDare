@@ -10,9 +10,9 @@ class Players {
     private var lastPlayer: String? = null
 
     fun chooseRandomPlayer(): String {
-        var currentPlayer = players[Random.nextInt(startIndex, players.size - 1)]
+        var currentPlayer = players[Random.nextInt(startIndex, players.size)]
         while(currentPlayer == lastPlayer) {
-            currentPlayer = players[Random.nextInt(startIndex, players.size - 1)]
+            currentPlayer = players[Random.nextInt(startIndex, players.size)]
         }
         lastPlayer = currentPlayer
         return currentPlayer
