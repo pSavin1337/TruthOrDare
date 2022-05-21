@@ -4,7 +4,7 @@ import com.lospollos.truthordare.data.PlayersStorage
 
 class PlayersUseCase {
 
-    fun getRandomPlayer(): String = PlayersStorage.players.chooseRandomPlayer()
+    fun getRandomPlayer(): String = PlayersStorage.players.getRandomPlayer()
     fun setPlayersList(playersList: List<String>) {
         PlayersStorage.players.players = playersList as ArrayList<String>
     }

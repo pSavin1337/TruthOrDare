@@ -4,31 +4,36 @@ import android.content.ContentUris
 import android.content.Context
 import android.database.Cursor
 import android.net.Uri
-import android.os.Environment
 import android.provider.DocumentsContract
-import com.lospollos.truthordare.App
+import com.lospollos.truthordare.Constants.DOWNLOAD_AUTHORITY
+import com.lospollos.truthordare.Constants.DOWNLOAD_URI
+import com.lospollos.truthordare.Constants.EXTERNAL_STORAGE_AUTHORITY
 
 class UriHelper {
 
-    fun uriToPath(uri: Uri): String? {
-        return when {
-            isExternalStorageDocument(uri) -> {
+    fun uriToPath(context: Context, uri: Uri): String? {
+        return when (uri.authority) {
+            EXTERNAL_STORAGE_AUTHORITY -> {
                 val docId = DocumentsContract.getDocumentId(uri)
                 val split = docId.split(":").toTypedArray()
                 val type = split[0]
                 if ("primary".equals(type, ignoreCase = true)) {
-                    return Environment.getExternalStorageDirectory().toString() + "/" + split[1]
+                    val androidDir = "Android"
+                    return context
+                        .getExternalFilesDir(null)
+                        ?.absolutePath
+                        ?.split(androidDir)?.get(0) + "/" + split[1]
                 }
                 null
                 // TODO handle non-primary volumes
             }
-            isDownloadsDocument(uri) -> {
+            DOWNLOAD_AUTHORITY -> {
                 val id = DocumentsContract.getDocumentId(uri)
                 val contentUri = ContentUris.withAppendedId(
-                    Uri.parse("content://downloads/public_downloads"),
+                    Uri.parse(DOWNLOAD_URI),
                     java.lang.Long.valueOf(id)
                 )
-                getDataColumn(App.context, contentUri)
+                getDataColumn(context, contentUri)
             }
             else -> {
                 null
@@ -57,11 +62,5 @@ class UriHelper {
         }
         return null
     }
-
-    private fun isExternalStorageDocument(uri: Uri): Boolean =
-        "com.android.externalstorage.documents" == uri.authority
-
-    private fun isDownloadsDocument(uri: Uri): Boolean =
-        "com.android.providers.downloads.documents" == uri.authority
 
 }

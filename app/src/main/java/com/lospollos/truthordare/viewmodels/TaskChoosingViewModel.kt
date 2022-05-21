@@ -1,15 +1,12 @@
 package com.lospollos.truthordare.viewmodels
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lospollos.truthordare.Constants.NOT_FOUND_TASK_REQUEST_CODE
-import com.lospollos.truthordare.Constants.SUCCESS_TASK_REQUEST_CODE
-import com.lospollos.truthordare.Constants.TYPE_ERROR_TASK_REQUEST_CODE
-import com.lospollos.truthordare.data.TaskLoaderRequest
 import com.lospollos.truthordare.domain.usecases.TasksUseCase
 
 class TaskChoosingViewModel : ViewModel() {
@@ -28,10 +25,10 @@ class TaskChoosingViewModel : ViewModel() {
         resultLauncher.launch(Intent.createChooser(intent, intentTitle))
     }
 
-    fun onChoosingActivityResult(result: ActivityResult) {
+    fun onChoosingActivityResult(context: Context, result: ActivityResult) {
         if (result.resultCode == Activity.RESULT_OK) {
             val selectedFile = result.data?.data
-            requestLiveData.value = tasksUseCase.getTasks(selectedFile)
+            requestLiveData.value = tasksUseCase.getTasks(context, selectedFile)
         }
     }
 

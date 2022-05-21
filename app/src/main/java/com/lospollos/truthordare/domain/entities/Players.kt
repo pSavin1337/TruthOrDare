@@ -9,7 +9,7 @@ class Players {
     private val startIndex = 0
     private var lastPlayer: String? = null
 
-    fun chooseRandomPlayer(): String {
+    fun getRandomPlayer(): String {
         var currentPlayer = players[Random.nextInt(startIndex, players.size)]
         while(currentPlayer == lastPlayer) {
             currentPlayer = players[Random.nextInt(startIndex, players.size)]
